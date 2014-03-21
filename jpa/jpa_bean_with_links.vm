@@ -56,8 +56,8 @@ $jpa.entityAnnotations(0, $entity)
 @NamedQueries ( {
   @NamedQuery ( name="${entity.name}.countAll", query="SELECT COUNT(x) FROM ${entity.name} x" )
 } )
-public class ${entity.name} implements Serializable
-{
+public class ${entity.name} implements Serializable {
+
     private static final long serialVersionUID = 1L;
 
 #if ( $entity.hasCompositePrimaryKey() )
