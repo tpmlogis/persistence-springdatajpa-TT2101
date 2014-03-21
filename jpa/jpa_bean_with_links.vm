@@ -112,8 +112,7 @@ $jpa.linkAnnotations(4, $link, $allMappedFields)
     //----------------------------------------------------------------------
     // CONSTRUCTOR(S)
     //----------------------------------------------------------------------
-    public ${entity.name}()
-    {
+    public ${entity.name}() {
 		super();
 #if ( $entity.hasCompositePrimaryKey() )        
 		this.compositePrimaryKey = new ${entity.name}Key();       
@@ -133,13 +132,11 @@ $jpa.linkAnnotations(4, $link, $allMappedFields)
 ##    }
 ##
 #foreach( $field in $entity.keyAttributes )
-#if ( $field.setter )    public void ${field.setter}( $field.type $field.name )
-    {
+#if ( $field.setter )    public void ${field.setter}( $field.type $field.name ) {
         this.compositePrimaryKey.${field.setter}( $field.name ) ;
     }
 #end
-#if ( $field.getter )    public $field.type ${field.getter}()
-    {
+#if ( $field.getter )    public $field.type ${field.getter}() {
         return this.compositePrimaryKey.${field.getter}() ;
     }
 #end
@@ -150,13 +147,11 @@ $jpa.linkAnnotations(4, $link, $allMappedFields)
     // GETTER & SETTER FOR THE KEY FIELD
     //----------------------------------------------------------------------
 #foreach( $field in $entity.keyAttributes )
-#if ( $field.setter )    public void ${field.setter}( $field.type $field.name )
-    {
+#if ( $field.setter )    public void ${field.setter}( $field.type $field.name ) {
         this.$field.name = $field.name ;
     }
 #end
-#if ( $field.getter )    public $field.type ${field.getter}()
-    {
+#if ( $field.getter )    public $field.type ${field.getter}() {
         return this.$field.name;
     }
 #end
@@ -170,13 +165,11 @@ $jpa.linkAnnotations(4, $link, $allMappedFields)
 ## #if ( $field.isUsedInLinkJoinColumn( $entity.selectedLinks ) != true )
 #if ( $field.databaseName )    //--- DATABASE MAPPING : $field.databaseName ( $field.databaseType ) 
 #end
-#if ( $field.setter )    public void ${field.setter}( $field.type $field.name )
-    {
+#if ( $field.setter )    public void ${field.setter}( $field.type $field.name ) {
         this.$field.name = $field.name;
     }
 #end
-#if ( $field.getter )    public $field.type ${field.getter}()
-    {
+#if ( $field.getter )    public $field.type ${field.getter}() {
         return this.$field.name;
     }
 #end
@@ -189,13 +182,11 @@ $jpa.linkAnnotations(4, $link, $allMappedFields)
     //----------------------------------------------------------------------
 ## #foreach( $link in $entity.links )
 #foreach( $link in $entity.selectedLinks )
-#if ( $link.setter )    public void ${link.setter}( ${link.formattedFieldType(0)} ${link.formattedFieldName(0)} )
-    {
+#if ( $link.setter )    public void ${link.setter}( ${link.formattedFieldType(0)} ${link.formattedFieldName(0)} ) {
         this.${link.formattedFieldName(0)} = ${link.formattedFieldName(0)};
     }
 #end
-#if ( $link.getter )    public ${link.formattedFieldType(0)} ${link.getter}()
-    {
+#if ( $link.getter )    public ${link.formattedFieldType(0)} ${link.getter}() {
         return this.${link.formattedFieldName(0)};
     }
 #end
